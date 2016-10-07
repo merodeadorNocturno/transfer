@@ -8,16 +8,18 @@ import { syncHistoryWithStore } from 'react-router-redux';
 import reducers from './reducers';
 import getRoutes from './routes/';
 
-console.log(getRoutes());
+//const appHistory = useRouterHistory(createHashHistory)({ queryKey: false });
+
+//console.log(getRoutes());
 
 const store = createStore(reducers);
-const history = syncHistoryWithStore(browserHistory, store);
+const appHistory = syncHistoryWithStore(browserHistory, store);
 
 ReactDOM.render(
     <Provider store={store}>
-        <Router history={history}>
+        
             {getRoutes()}
-        </Router>
+        
     </Provider>,
     document.getElementById('app')
 );
