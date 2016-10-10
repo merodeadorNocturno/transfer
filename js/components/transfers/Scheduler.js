@@ -19,19 +19,17 @@ class Scheduler extends React.Component {
         return (
             <form>
                 <div className="form-group">
-                    <label htmlFor="whenToPerform">Account to be remitted</label>
-                    <DatePicker id="whenToPerform" className="form-control" />
+                    <label htmlFor="fromDate">From this date</label><br />
+                    <DatePicker id="fromDate" className="form-control" />
                 </div>
                 <div className="form-group">
-                    <label htmlFor="remittanceAccount">Remittance Account</label>
-                    <DatePicker id="" />
+                    <label htmlFor="untilDate">Until this date</label><br />
+                    <DatePicker id="untilDate" />
                 </div>
                 <div className="form-group">
                     <label htmlFor="amount">Amount</label>
                     <CurrencyInput className="form-control" value={this.state.amount} id="amount" onChange={this.handleChange} />
-                    
                 </div>
-
                 <div className="form-group">
                     <button type="submit" className="btn btn-default">Schedule</button>
                 </div>

@@ -1,3 +1,4 @@
+require('./TransferForm.scss');
 import React from 'react';
 import CurrencyInput from 'react-currency-input';
 
@@ -17,7 +18,7 @@ class TransferForm extends React.Component {
 
     render () {
         return (
-            <form>
+            <form className="form">
                 <div className="form-group">
                     <label htmlFor="accountRemitted">Account to be remitted!</label>
                     <input 
@@ -42,9 +43,14 @@ class TransferForm extends React.Component {
                     </div>
                 </div>
                 <div className="checkbox">
+                    <span>
                     <label>
-                        <input type="checkbox" /> Remember me
+                        Schedule this operation
                     </label>
+                    </span>
+                    <span>
+                        <input type="checkbox" id="checkboxSchedule" className="form__checkbox"/>
+                    </span>
                 </div>
                 <div className="form-group">
                     <button type="submit" className="btn btn-default">Submit</button>

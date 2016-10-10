@@ -10,11 +10,10 @@ import MainBank from './transfersView/MainBank';
 const getRoutes = () => {
     return (
         <Router history={hashHistory} >
-            <Route path="/" component={MainBank}>
-                <Route path="scratch" component={Transfers}/>
-                <Route path="transfer" component={MainBank}/>
-                <Route path="view" component={Transfers}/>
-            </Route>
+            <Route path="/" component={MainBank} />
+            <Route path="scratch" component={Transfers}/>
+            <Route path="transfer" component={MainBank}/>
+            <Route path="view" component={Transfers}/>
         </Router>
     );
 };

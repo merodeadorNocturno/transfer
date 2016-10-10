@@ -26,10 +26,10 @@ class NavigationBar extends React.Component {
                     <a className="navbar-brand" href="#">Bank Name</a>
                     </div>
                     <div id="navbar" className="collapse navbar-collapse">
-                    <ul className="nav navbar-nav">
-                        <li className="active"><a href="#">Transfers</a></li>
-                        <li><a href="#review">Review</a></li>
-                    </ul>
+                        <ul className="nav navbar-nav">
+                            <li className="active"><a href="#">Transfers</a></li>
+                            <li><a href="#review">Review</a></li>
+                        </ul>
                     </div>
                 </div>
             </nav>
