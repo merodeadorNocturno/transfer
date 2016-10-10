@@ -1,7 +1,7 @@
 require('./TransferForm.scss');
 import React from 'react';
 import CurrencyInput from 'react-currency-input';
-
+import CurrencyPicker from '../common/CurrencyPicker';
 
 class TransferForm extends React.Component {
     constructor () {
@@ -20,7 +20,7 @@ class TransferForm extends React.Component {
         return (
             <form className="form">
                 <div className="form-group">
-                    <label htmlFor="accountRemitted">Account to be remitted!</label>
+                    <label htmlFor="accountRemitted">Account to be remitted</label>
                     <input 
                         type="number"
                         className="form-control"
@@ -34,15 +34,19 @@ class TransferForm extends React.Component {
                     <label htmlFor="remittanceAccount">Remittance Account</label>
                     <input type="number" className="form-control" id="remittanceAccount" placeholder="12 digits" min="000000000000" max="999999999999" required={true}/>
                 </div>
+                <CurrencyPicker />
                 <div className="form-group">
                     <label className="sr-only" htmlFor="exampleInputAmount">Amount (in dollars)</label>
-                    <div className="input-group">
+                    <div className="input-group"  id="exampleInputAmount">
                         <div className="input-group-addon">$</div>
-                        <input type="text" className="form-control" id="exampleInputAmount" placeholder="Amount" />
+                        <input type="number" className="form-control" placeholder="Amount" />
                         <div className="input-group-addon">.00</div>
                     </div>
                 </div>
-                <div className="checkbox">
+                <div className="form-group">
+                    <button type="submit" className="btn btn-default">Submit</button>
+                </div>
+                <div className="form-group">
                     <span>
                     <label>
                         Schedule this operation
@@ -51,9 +55,6 @@ class TransferForm extends React.Component {
                     <span>
                         <input type="checkbox" id="checkboxSchedule" className="form__checkbox"/>
                     </span>
-                </div>
-                <div className="form-group">
-                    <button type="submit" className="btn btn-default">Submit</button>
                 </div>
             </form>
         );

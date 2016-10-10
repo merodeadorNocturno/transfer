@@ -27,10 +27,6 @@ class Scheduler extends React.Component {
                     <DatePicker id="untilDate" />
                 </div>
                 <div className="form-group">
-                    <label htmlFor="amount">Amount</label>
-                    <CurrencyInput className="form-control" value={this.state.amount} id="amount" onChange={this.handleChange} />
-                </div>
-                <div className="form-group">
                     <button type="submit" className="btn btn-default">Schedule</button>
                 </div>
             </form>
