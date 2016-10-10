@@ -1,0 +1,24 @@
+[
+    {
+        "account": "123456789012",
+        "date": "1476115925335",
+        "details": {
+            "amount": 50000.00,
+            "currency": "usd",
+            "from": "123456789012",
+            "to": "234567890123",
+            "schedule": "MONTHLY"
+        }
+    },
+    {
+        "account": "123456789012",
+        "date": "1476115925335",
+        "details": {
+            "amount": 12450.00,
+            "currency": "eur",
+            "from": "123456789012",
+            "to": "234567890123",
+            "schedule": "MONTHLY"
+        }
+    }
+]
