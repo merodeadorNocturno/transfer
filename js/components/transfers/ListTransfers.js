@@ -23,6 +23,7 @@ class Scheduler extends React.Component {
                         <th>From Account</th>
                         <th>To Account</th>
                         <th>Amount</th>
+                        <th>Currency</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -31,30 +32,35 @@ class Scheduler extends React.Component {
                         <td>161292583469</td>
                         <td>314159265358</td>
                         <td>16.00</td>
+                        <td>USD</td>
                     </tr>
                     <tr className="danger">
                         <td>2016-10-03</td>
                         <td>314159265358</td>
                         <td>161292583469</td>
                         <td>1024.00</td>
+                        <td>EUR</td>
                     </tr>
                     <tr className="success">
                         <td>2016-10-02</td>
                         <td>161292583469</td>
                         <td>314159265358</td>
                         <td>345.00</td>
+                        <td>USD</td>
                     </tr>
                     <tr className="danger">
                         <td>2016-09-23</td>
                         <td>161292583469</td>
                         <td>314159265358</td>
                         <td>98.36</td>
+                        <td>USD</td>
                     </tr>
                     <tr className="success">
                         <td>2016-09-21</td>
                         <td>314159265358</td>
                         <td>161292583469</td>
                         <td>69.71</td>
+                        <td>MXN</td>
                     </tr>
                 </tbody>
             </table>
