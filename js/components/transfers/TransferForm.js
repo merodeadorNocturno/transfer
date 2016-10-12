@@ -3,6 +3,7 @@ import React from 'react';
 import CurrencyInput from 'react-currency-input';
 import { CurrencyPicker } from '../common/CurrencyPicker';
 import { AccountNumber } from '../common/AccountNumber';
+import Scheduler from './Scheduler';
 
 class TransferForm extends React.Component {
     constructor () {
@@ -38,9 +39,6 @@ class TransferForm extends React.Component {
                     </div>
                 </div>
                 <div className="form-group">
-                    <button type="submit" className="btn btn-default">Submit</button>
-                </div>
-                <div className="form-group">
                     <span>
                     <label>
                         Schedule this operation
@@ -49,6 +47,10 @@ class TransferForm extends React.Component {
                     <span>
                         <input type="checkbox" id="checkboxSchedule" className="form__checkbox"/>
                     </span>
+                </div>
+                <Scheduler />
+                <div className="form-group">
+                    <button type="submit" className="btn btn-default">Submit</button>
                 </div>
             </form>
         );

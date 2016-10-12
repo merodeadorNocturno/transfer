@@ -16,12 +16,6 @@ class MainBank extends React.Component {
                             <TransferForm />
                         </div>
                     </div>
-                    <div className="row">
-                        <div className="col-sm-4"></div>
-                        <div className="col-sm-8">
-                            <Scheduler />
-                        </div>
-                    </div>
                 </div>
             </div>
         );

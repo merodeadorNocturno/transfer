@@ -21,7 +21,7 @@ class Scheduler extends React.Component {
         options = intervals.map((interval, i) => <option key={i} value="{interval}">{interval}</option>);
 
         return (
-            <form>
+            <div>
                 <div className="form-group">
                     <label htmlFor="fromDate">From this date</label><br />
                     <DatePicker id="fromDate" className="form-control" />
@@ -36,10 +36,7 @@ class Scheduler extends React.Component {
                         {options}
                     </select>
                 </div>
-                <div className="form-group">
-                    <button type="submit" className="btn btn-default">Schedule</button>
-                </div>
-            </form>
+            </div>
         );
     }
 }
