@@ -1,7 +1,8 @@
 require('./TransferForm.scss');
 import React from 'react';
 import CurrencyInput from 'react-currency-input';
-import CurrencyPicker from '../common/CurrencyPicker';
+import { CurrencyPicker } from '../common/CurrencyPicker';
+import { AccountNumber } from '../common/AccountNumber';
 
 class TransferForm extends React.Component {
     constructor () {
@@ -19,17 +20,7 @@ class TransferForm extends React.Component {
     render () {
         return (
             <form className="form">
-                <div className="form-group">
-                    <label htmlFor="accountRemitted">Account to be remitted</label>
-                    <input 
-                        type="number"
-                        className="form-control"
-                        id="accountRemitted"
-                        placeholder="12 digits"
-                        min="000000000000"
-                        max="999999999999"
-                        required={true}/>
-                </div>
+                <AccountNumber />
                 <div className="form-group">
                     <label htmlFor="remittanceAccount">Remittance Account</label>
                     <input type="number" className="form-control" id="remittanceAccount" placeholder="12 digits" min="000000000000" max="999999999999" required={true}/>

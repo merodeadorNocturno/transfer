@@ -1,5 +1,4 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import NavigationBar from '../../components/common/NavigationBar';
 import ListTransfers from '../../components/transfers/ListTransfers';
 

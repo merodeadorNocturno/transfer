@@ -4,10 +4,14 @@ import { routerReducer } from 'react-router-redux';
 
 // @ reducers
 import transfers from './transfers/makeTransfer';
+import CurrencyPicker from './transfers/CurrencyPicker';
+import AccountNumber from './transfers/AccountNumber';
 
 
 const appReducer = combineReducers({
     transfers,
+    CurrencyPicker,
+    AccountNumber,
     routing: routerReducer
 });
 
