@@ -5,7 +5,7 @@ const initialState = Immutable.Map({
 });
 
 const CurrencyPicker = (state = initialState, action) => {
-    switch(action.type) {
+    switch (action.type) {
         case "CHANGE_VALUE":
             return state.merge({selectedCurrency: action.data.value});
         default:
