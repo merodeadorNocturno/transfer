@@ -3,7 +3,7 @@ import React from 'react';
 import CurrencyInput from 'react-currency-input';
 import { CurrencyPicker } from '../common/CurrencyPicker';
 import { AccountNumber } from '../common/AccountNumber';
-import Scheduler from './Scheduler';
+import { Scheduler } from './Scheduler';
 
 class TransferForm extends React.Component {
     constructor () {
