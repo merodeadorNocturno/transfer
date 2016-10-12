@@ -1,6 +1,7 @@
 import React from 'react';
 import CurrencyInput from 'react-currency-input';
 import DatePicker from '../common/DatePicker';
+import Select from 'react-select';
 
 class Scheduler extends React.Component {
     constructor() {
@@ -17,8 +18,8 @@ class Scheduler extends React.Component {
 
     render() {
         const intervals = ["1-TIME", "WEEKLY", "MONTHLY", "YEARLY"];
-        let options = [];
-        options = intervals.map((interval, i) => <option key={i} value="{interval}">{interval}</option>);
+        //options = intervals.map((interval, i) => <option key={i} value="{interval}">{interval}</option>);
+        const options = intervals.map((interval, i) => ({value: interval, label:interval}));
 
         return (
             <div>
@@ -31,10 +32,15 @@ class Scheduler extends React.Component {
                     <DatePicker id="untilDate" />
                 </div>
                 <div className="form-group">
-                    <label htmlFor="currencies">Select Periodicity</label>
-                    <select id="intervals" className="form-control" name="intervals">
-                        {options}
-                    </select>
+                <label htmlFor="currencies">Select Currency</label>
+                <Select
+                    className="form__currency-picker"
+                    name="form-field-name"
+                    options={options}
+                    onChange={this.props.changeSelect}
+                    clearable={false}
+                    searchable={false}
+                />
                 </div>
             </div>
         );
