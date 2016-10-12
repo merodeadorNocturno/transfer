@@ -1,36 +1,73 @@
 import '../transfers/TransferForm.scss';
 import React from 'react';
+import ReactDOM from 'react-dom';
 import { connect } from 'react-redux';
 
 class AccountNumber extends React.Component {
+    componentDidMount () {
+        const n = ReactDOM.findDOMNode(this.refs.account_number);
+        const addEvent = n.addEventListener || n.attachEvent;
+
+        addEvent("keypress", this.handleKeyPress, false);
+    }
+
+    componentWillUnmount() {
+        const removeEvent = n.removeEventListener || n.detachEvent;
+        removeEvent('keypress', this.handleKeyPress);
+    }
+
+    handleKeyPress(n) {
+        console.log('entered');
+        const limit = /^[0-9]{0,11}$/;
+        let target = n.target.value;
+        if (!target.match(limit)) {
+            n.preventDefault();
+        }
+    }
+
     render() {
-        const { AccountNumber } = this.props;
-        console.log('***********', AccountNumber);
+        const { AccountNumber, htmlForId, label } = this.props;
+        let validatedAccount = [];
+
         return (
-            <div className="form-group">
-                    <label htmlFor="accountRemitted">Account to be remitted</label>
-                    <input 
-                        type="number"
-                        className="form-control"
-                        id={AccountNumber.get('htmlForId')}
-                        value={AccountNumber.get('name')}
-                        placeholder="12 digits"
-                        pattern="[0-9]{12}"
-                        required={true}
-                        onBlur={this.props.handleChange}
-                        />
+            <div className={AccountNumber.get('errored')}>
+                <label className="control-label" htmlFor={htmlForId}>
+                    {label} {AccountNumber.get('errorMsg')}
+                </label>
+                <input
+                    ref="account_number"
+                    type="number"
+                    className="form-control"
+                    id={htmlForId}
+                    placeholder="12 digits"
+                    maxLength="12"
+                    required={true}
+                    onBlur={this.props.limitNumbers}
+                    />
             </div>
         );
     }
 }
 
+
 const convertToString = (number) => {
+    console.log(number);
     if (Number.isInteger) {
         return '' + number;
+    } else {
+        return number;
     }
 };
 
-const validateNumbers = (string) => string.match(/^[0-9]{12}$/);
+const validateNumbers = (string) => {
+    console.log(string);
+    let validates = string.match(/^[0-9]{12}$/);
+    if (validates) {
+        return true;
+    } else {
+        return false;
+    }
+};
 
 
 AccountNumber.propTypes = {
@@ -45,8 +82,15 @@ module.exports.AccountNumber = connect(
     },
     {
         handleChange: (data) => {
-            console.log("handleChange", data);
+            //console.log("handleChange", data);
             return { type: 'CHANGE_ACCOUNT_NUMBER', data };
+        },
+        limitNumbers: (data) => {
+            let actionType = 'VALIDATE_ACCOUNT_NUMBERS';
+            if (data.target.value.length < 12) {
+                actionType = 'ERROR_ACCOUNT_NUMBER';
+            }
+            return { type: actionType, data };
         }
     }
 )(AccountNumber);
