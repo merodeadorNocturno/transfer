@@ -50,26 +50,6 @@ class AccountNumber extends React.Component {
 }
 
 
-const convertToString = (number) => {
-    console.log(number);
-    if (Number.isInteger) {
-        return '' + number;
-    } else {
-        return number;
-    }
-};
-
-const validateNumbers = (string) => {
-    console.log(string);
-    let validates = string.match(/^[0-9]{12}$/);
-    if (validates) {
-        return true;
-    } else {
-        return false;
-    }
-};
-
-
 AccountNumber.propTypes = {
     account: React.PropTypes.object,
     handleChange: React.PropTypes.func
