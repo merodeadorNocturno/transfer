@@ -20,11 +20,14 @@ class TransferForm extends React.Component {
     render () {
         return (
             <form className="form">
-                <AccountNumber />
-                <div className="form-group">
-                    <label htmlFor="remittanceAccount">Remittance Account</label>
-                    <input type="number" className="form-control" id="remittanceAccount" placeholder="12 digits" min="000000000000" max="999999999999" required={true}/>
-                </div>
+                <AccountNumber
+                    htmlForId="accountRemitted"
+                    label="Origin Account"
+                />
+                <AccountNumber
+                    htmlForId="remittanceAccount"
+                    label="Recipient Account"
+                />
                 <CurrencyPicker />
                 <div className="form-group">
                     <label className="sr-only" htmlFor="exampleInputAmount">Amount (in dollars)</label>
