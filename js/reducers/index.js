@@ -6,12 +6,14 @@ import { routerReducer } from 'react-router-redux';
 import transfers from './transfers/makeTransfer';
 import CurrencyPicker from './transfers/CurrencyPicker';
 import AccountNumber from './transfers/AccountNumber';
+import Scheduler from './transfers/Scheduler';
 
 
 const appReducer = combineReducers({
     transfers,
     CurrencyPicker,
     AccountNumber,
+    Scheduler,
     routing: routerReducer
 });
 
