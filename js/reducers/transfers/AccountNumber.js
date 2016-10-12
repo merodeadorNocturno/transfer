@@ -1,24 +1,22 @@
 import Immutable from 'immutable';
 
-const initialState = Immutable.Map (
+const initialState = Immutable.Map(
     {
-        AccountNumber: {
-            number: '000000000000',
-            name: 'accountRemitted',
-            fieldName: 'Account to be remitted',
-            htmlForId: 'accountRemitted'
-        }
+        number: '000000000000',
+        name: 'accountRemitted',
+        fieldName: 'Account to be remitted',
+        htmlForId: 'accountRemitted'
     }
 );
 
 const AccountNumber = (state = initialState, action) => {
-    console.log("reducer", action);
-    switch(action.type) {
+    //console.log("reducer", action);
+    switch (action.type) {
         case 'CHANGE_ACCOUNT_NUMBER':
-            //console.log("can", action.data);
+            console.log("can", action.data);
             return state.merge(
                 {
-                    accountNumber:{number: action.data.value}
+                    accountNumber: { number: action.data }
                 }
             );
         case 'REJECT_VALUE':
