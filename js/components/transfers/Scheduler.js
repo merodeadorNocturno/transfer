@@ -2,23 +2,13 @@ import React from 'react';
 import CurrencyInput from 'react-currency-input';
 import DatePicker from '../common/DatePicker';
 import Select from 'react-select';
+import { connect } from 'react-redux';
 
 class Scheduler extends React.Component {
-    constructor() {
-        super();
-        this.state = {
-            amount: "0.00"
-        };
-        this.handleChange = this.handleChange.bind(this);
-    }
-
-    handleChange(value) {
-        this.setState({ amount: value });
-    }
-
     render() {
+        const { selectedPeriodicity } =  this.props;
+
         const intervals = ["1-TIME", "WEEKLY", "MONTHLY", "YEARLY"];
-        //options = intervals.map((interval, i) => <option key={i} value="{interval}">{interval}</option>);
         const options = intervals.map((interval, i) => ({value: interval, label:interval}));
 
         return (
@@ -32,19 +22,38 @@ class Scheduler extends React.Component {
                     <DatePicker id="untilDate" />
                 </div>
                 <div className="form-group">
-                <label htmlFor="currencies">Select Currency</label>
-                <Select
-                    className="form__currency-picker"
-                    name="form-field-name"
-                    options={options}
-                    onChange={this.props.changeSelect}
-                    clearable={false}
-                    searchable={false}
-                />
+                    <label htmlFor="currencies">Select Periodicity</label>
+                    <Select
+                        className="form__periodicity-picker"
+                        name="form-periodicity-picker"
+                        options={options}
+                        onChange={this.props.changePeriodicity}
+                        clearable={false}
+                        searchable={false}
+                        value={selectedPeriodicity.get('selectedPeriodicity')}
+                    />
                 </div>
             </div>
         );
     }
 }
 
-export default Scheduler;
+Scheduler.propTypes = {
+    selectedPeriodicity: React.PropTypes.object
+};
+
+//*
+module.exports.Scheduler = connect(
+    (state) => {
+        return { selectedPeriodicity: state.Scheduler };
+    },
+    {
+        changePeriodicity: (data) => {
+            return {type: 'CHANGE_PERIODICITY', data};
+        }
+    }
+)(Scheduler);
+//*/
+
+
+//export default Scheduler;
