@@ -57,7 +57,6 @@ AccountNumber.propTypes = {
 
 module.exports.AccountNumber = connect(
     (state) => {
-        //console.log("state", state);
         return { AccountNumber: state.AccountNumber };
     },
     {
