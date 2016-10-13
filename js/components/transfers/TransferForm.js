@@ -5,6 +5,7 @@ import { CurrencyPicker } from '../common/CurrencyPicker';
 import { AccountNumber } from '../common/AccountNumber';
 import { Scheduler } from './Scheduler';
 
+
 class TransferForm extends React.Component {
     constructor () {
         super();
@@ -30,14 +31,6 @@ class TransferForm extends React.Component {
                     label="Recipient Account"
                 />
                 <CurrencyPicker />
-                <div className="form-group">
-                    <label className="sr-only" htmlFor="exampleInputAmount">Amount (in dollars)</label>
-                    <div className="input-group"  id="exampleInputAmount">
-                        <div className="input-group-addon">$</div>
-                        <input type="number" className="form-control" placeholder="Amount" />
-                        <div className="input-group-addon">.00</div>
-                    </div>
-                </div>
                 <div className="form-group">
                     <span>
                     <label>

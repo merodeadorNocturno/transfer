@@ -7,6 +7,7 @@ import transfers from './transfers/makeTransfer';
 import CurrencyPicker from './transfers/CurrencyPicker';
 import AccountNumber from './transfers/AccountNumber';
 import Scheduler from './transfers/Scheduler';
+import Amount from './transfers/Amount';
 
 
 const appReducer = combineReducers({
@@ -14,6 +15,7 @@ const appReducer = combineReducers({
     CurrencyPicker,
     AccountNumber,
     Scheduler,
+    Amount,
     routing: routerReducer
 });
 
