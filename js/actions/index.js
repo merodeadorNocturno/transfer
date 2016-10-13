@@ -28,25 +28,10 @@ const insertRecord = (transfer) => {
 
 /**
  * Retrieves all records from DB
- * @returns {Object} Transfers object
+ * @returns {Object|null} Transfers object
  */
 const retrieveAllRecords = () => {
-    return new Promise((resolve, reject) => {
-        setTimeout(() => {
-            const transfersString = localStorage.getItem('transfers');
-            if (!transfersString) {
-                reject('There are no recorded transfers');
-            }
-            else {
-                resolve(transfersString);
-            }
-        }, 1500); 
-    }).then((transfersString) => {
-        const transfersObject = JSON.parse(transfersString);
-        const transfersImmutable = toImmutable(transfersObject);
-
-        return transfersImmutable;
-    }).catch((reason) => {
-        return `Transaction failed. Reason: ${reason}`;
-    });
+    //setTimeout(() => {
+    return localStorage.getItem('transfers');
+    //}, 1500);
 };
