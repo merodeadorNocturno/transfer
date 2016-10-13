@@ -7,7 +7,7 @@ import { connect } from 'react-redux';
 class CurrencyPicker extends React.Component {
     render() {
         const currencies = [
-            'USD', 'EUR', 'GBP', 'CAD', 'ARS', 'AUD', 'BBD', 'BDT', 'BSD', 'BHD', 'BRL', 'BOB', 'BND', 'BGN', 'MMK', 'KYD', 'CLP', 'CNY', 'COP', 'CRC', 'HRK', 'CZK', 'DKK', 'DOP', 'XCD', 'EGP', 'XPF', 'FJD', 'GHS', 'GTQ', 'GYD', 'GEL', 'HKD', 'HUF', 'ISK', 'INR', 'IDR', 'NIS', 'JMD', 'JPY', 'JOD', 'KZT', 'KES', 'KWD', 'LVL', 'LTL', 'MXN', 'MYR', 'MUR', 'MDL', 'MAD', 'MNT', 'MZN', 'ANG', 'NZD', 'NGN', 'NOK', 'OMR', 'PKR', 'PYG', 'PEN', 'PHP', 'PLN', 'QAR', 'RON', 'RUB', 'SAR', 'RSD', 'SCR', 'SGD', 'SYP', 'ZAR', 'KRW', 'LKR', 'SEK', 'CHF', 'TWD', 'THB', 'TZS', 'TTD', 'TRY', 'UAH', 'AED', 'UYU', 'VEB', 'VND', 'ZMK'
+            'USD', 'EUR', 'GBP', 'CAD', 'BTC', 'ARS', 'AUD', 'BBD', 'BDT', 'BSD', 'BHD', 'BRL', 'BOB', 'BND', 'BGN', 'MMK', 'KYD', 'CLP', 'CNY', 'COP', 'CRC', 'HRK', 'CZK', 'DKK', 'DOP', 'XCD', 'EGP', 'XPF', 'FJD', 'GHS', 'GTQ', 'GYD', 'GEL', 'HKD', 'HUF', 'ISK', 'INR', 'IDR', 'NIS', 'JMD', 'JPY', 'JOD', 'KZT', 'KES', 'KWD', 'LVL', 'LTL', 'MXN', 'MYR', 'MUR', 'MDL', 'MAD', 'MNT', 'MZN', 'ANG', 'NZD', 'NGN', 'NOK', 'OMR', 'PKR', 'PYG', 'PEN', 'PHP', 'PLN', 'QAR', 'RON', 'RUB', 'SAR', 'RSD', 'SCR', 'SGD', 'SYP', 'ZAR', 'KRW', 'LKR', 'SEK', 'CHF', 'TWD', 'THB', 'TZS', 'TTD', 'TRY', 'UAH', 'AED', 'UYU', 'VEB', 'VND', 'ZMK'
         ];
         
         const options = currencies.map((curr, i) => ({value: curr, label: curr}));
@@ -48,9 +48,6 @@ module.exports.CurrencyPicker = connect (
     {
         changeSelect: (data) => {
             return {type: 'CHANGE_VALUE', data};
-        },
-        onBlurPicker: (data) => { console.log('blur');
-            return {type: 'CHANGE_CURRENCY', data};
         }
     }
 )(CurrencyPicker);

@@ -12,9 +12,6 @@ const Amount = ( state = initialState, action ) => {
         case 'CHANGE_AMOUNT':
             console.log('st', state);
             return state.merge({amount: action.data.target.value});
-        case 'CHANGE_CURRENCY':
-            console.log('cc', action.data.target);
-            return state.merge({currency: action.data.value});
         default:
             return state;
     }
