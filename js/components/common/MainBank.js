@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import TransferForm from '../transfers/TransferForm';
+import { TransferForm } from '../transfers/TransferForm';
 import Scheduler from '../transfers/Scheduler';
 import NavigationBar from './NavigationBar';
 
