@@ -17,7 +17,6 @@ class AccountNumber extends React.Component {
     }
 
     handleKeyPress(n) {
-        console.log('entered');
         const limit = /^[0-9]{0,11}$/;
         let target = n.target.value;
         if (!target.match(limit)) {

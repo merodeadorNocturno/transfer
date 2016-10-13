@@ -42,7 +42,6 @@ Scheduler.propTypes = {
     selectedPeriodicity: React.PropTypes.object
 };
 
-//*
 module.exports.Scheduler = connect(
     (state) => {
         return { selectedPeriodicity: state.Scheduler };
@@ -53,7 +52,3 @@ module.exports.Scheduler = connect(
         }
     }
 )(Scheduler);
-//*/
-
-
-//export default Scheduler;
