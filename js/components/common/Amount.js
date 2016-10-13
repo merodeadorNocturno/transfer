@@ -12,13 +12,13 @@ class Amount extends React.Component {
                 <div className="input-group" id="amountDiv">
                     <div className="input-group-addon">{currency}</div>
                     <input
+                        required={true}
                         type="number"
                         id="amount"
                         className="form-control"
                         placeholder="Amount"
                         onChange={this.props.onChangeAmount}
                     />
-                    <div className="input-group-addon">.00</div>
                 </div>
             </div>
         );
