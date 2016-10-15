@@ -60,7 +60,6 @@ module.exports.AccountNumber = connect(
     },
     {
         handleChange: (data) => {
-            //console.log("handleChange", data);
             return { type: 'CHANGE_ACCOUNT_NUMBER', data };
         },
         limitNumbers: (data) => {
