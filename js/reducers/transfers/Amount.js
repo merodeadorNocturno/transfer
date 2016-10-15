@@ -10,7 +10,6 @@ const initialState = Immutable.Map(
 const Amount = ( state = initialState, action ) => {
     switch (action.type) {
         case 'CHANGE_AMOUNT':
-            console.log('st', state);
             return state.merge({amount: action.data.target.value});
         default:
             return state;
