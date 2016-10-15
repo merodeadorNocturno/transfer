@@ -6,13 +6,13 @@ import { connect } from 'react-redux';
 
 class Scheduler extends React.Component {
     render() {
-        const { selectedPeriodicity } =  this.props;
+        const { selectedPeriodicity, schedulerClassName } =  this.props;
 
         const intervals = ["1-TIME", "WEEKLY", "MONTHLY", "YEARLY"];
         const options = intervals.map((interval, i) => ({value: interval, label:interval}));
 
         return (
-            <div>
+            <div className={schedulerClassName}>
                 <div className="form-group">
                     <label htmlFor="fromDate">From this date</label><br />
                     <DatePicker id="fromDate" className="form-control" />
