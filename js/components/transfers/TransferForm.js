@@ -8,45 +8,149 @@ import { Scheduler } from './Scheduler';
 import { connect } from 'react-redux';
 
 
+/**
+ * Parses form data
+ * 
+ * @returns {Object}
+ */
+const parseForm = (formDataJson) => {
+    const details = {};
+    for (let e of formDataJson) {
+        if (e.id || e.name) {
+            details[e.id || e.name] = e.value;
+        }
+    }
+    return { details: details };
+};
+
+/**
+ * Inserts transfer in DB
+ * 
+ * @param {Object} transfer JSON
+ * @returns {Void}
+ */
+const insertTransferToDb = (transfer) => {
+    let AllTransfers = JSON.parse(getFromLocalStorage());
+    AllTransfers.transfers.push(transfer);
+    return localStorage.setItem('transfers', JSON.stringify(AllTransfers));
+};
+
+/**
+ * 
+ */
+const fixEmptyTransfers = () => {
+    const newTransfers = {
+        myAccount: '',
+        transfers: []
+    };
+    if (!getFromLocalStorage()) {
+        localStorage.setItem('transfers', JSON.stringify(newTransfers));
+    }
+}
+
+
+/**
+ * Gets all transfer from DB
+ * 
+ * @returns {Object}
+ */
+const getFromLocalStorage = () => {
+    return localStorage.getItem('transfers');
+};
+
+/**
+ * Asynchronously inserts to DB
+ * 
+ * @param {object} transfer data in JSON
+ * @returns {Promise}
+ */
+const insertTransfers = (transfer) => {
+    let parsedTransfer = parseForm(transfer);
+    fixEmptyTransfers();
+
+    return new Promise((resolve, reject) => {
+    console.log('parsedTransfer', parsedTransfer);
+        insertTransferToDb(parsedTransfer);
+        const json = getFromLocalStorage();
+        if (json !== null) {
+            resolve(JSON.parse(json));
+        } else {
+            reject('No data available...');
+        }
+    }).then((json) => {
+        dispatch(receiveTransfers(transfer, json));
+    }).catch((reason) => {
+        return console.log(reason);
+    });
+};
+
+
+/**
+ * Asynchronously retrieves from DB
+ * 
+ * @param {object} transfer data in JSON
+ * @returns {Promise}
+ */
+const fetchTransfers = (transfer) => {
+    return new Promise((resolve, reject) => {
+        const json = getFromLocalStorage();
+        if (json !== null) {
+            resolve(JSON.parse(json)); console.log(inserted);
+        } else {
+            reject('No data available...');
+        }
+    }).then((json) => {
+        dispatch(receiveTransfers(transfer, json));
+    }).catch((reason) => {
+        return console.log('No data available');
+    });
+};
+
 class TransferForm extends React.Component {
 
     handleSubmit(event) {
         event.preventDefault();
+        insertTransfers(event.target.elements);
+        //console.log(parseForm(event.target.elements));
     }
 
     render() {
-        const {TransferForm} = this.props;
-        console.log('trans', TransferForm);
+        const { TransferForm } = this.props;
         return (
-            <form className="form" onSubmit={this.handleSubmit}>
+            <form className="form" onSubmit={this.handleSubmit} onChange={this.props.onChangeOriginAccount}>
                 <AccountNumber
                     htmlForId="accountRemitted"
                     label="Origin Account"
-                    onChange={this.props.onChangeOriginAccount}
+                    onBlur={this.props.onChangeOriginAccount}
                     />
                 <AccountNumber
                     htmlForId="remittanceAccount"
                     label="Recipient Account"
                     onChange={this.props.onChangeRecipientAccount}
                     />
-                <CurrencyPicker />
+                <CurrencyPicker
+                    id="CurrencyPicker"
+                 />
                 <div className="form-group">
                     <span>
                         <label>
-                            Schedule this operation!!
+                            Schedule this operation
                         </label>
                     </span>
                     <span>
-                        <input 
+                        <input
+                            value={TransferForm.get('scheduleOperation')}
                             type="checkbox" 
-                            id="checkboxSchedule" 
+                            id="checkboxSchedule"
+                            name="checkboxSchedule"
                             className="form__checkbox" 
-                            onChange={this.props.onChangeSchedulerOn} />
+                            onChange={this.props.onChangeScheduler} />
                     </span>
                 </div>
                 <Scheduler
-                    onChange={this.props.onChangeScheduler}
+                    onBlur={this.props.onChangeScheduler}
                     schedulerClassName={TransferForm.get('schedulerHidden')}
+                    onChange={this.props.onChangeInitialDate}
                  />
                 <div className="form-group">
                     <button type="submit" className="btn btn-default">Submit</button>
@@ -59,10 +163,11 @@ class TransferForm extends React.Component {
 
 module.exports.TransferForm = connect(
     (state) => {
+        //console.log(state);
         return { TransferForm: state.TransferForm };
     },
     {
-        onChangeOriginAccount: (data) => { console.log('enter', data);
+        onChangeOriginAccount: (data) => { 
             return { type: 'CHANGE_ORIGIN_ACCOUNT', data };
         },
         onChangeRecipientAccount: (data) => {
@@ -74,10 +179,11 @@ module.exports.TransferForm = connect(
         onChangeAmount: (data) => {
             return { type: 'CHANGE_AMOUNT', data };
         },
-        onChangeSchedulerOn: (data) => {
+        onChangeScheduler: (data) => {
             return { type: 'CHANGE_SCHEDULER', data };
         },
         onChangeInitialDate: (data) => {
+            console.log('enter', data.target.value);
             return { type: 'CHANGE_INITIAL_DATE', data };
         },
         onChangeFinalDate: (data) => {
