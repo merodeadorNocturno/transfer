@@ -20,6 +20,4 @@ const appReducer = combineReducers({
     routing: routerReducer
 });
 
-//const doNotResetReducers = ['screen']; //screen reducer should only be affected by a resize action
-
 module.exports = appReducer;

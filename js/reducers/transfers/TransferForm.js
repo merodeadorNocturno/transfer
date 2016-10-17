@@ -14,8 +14,10 @@ const initialState = Immutable.Map({
 
 
 const TransferForm = (state = initialState, action ) => {
+    
     switch(action.type) {
         case "CHANGE_ORIGIN_ACCOUNT":
+            //console.log("CHANGE_ORIGIN_ACCOUNT", action.data.value);
             return state.merge({originAccount: action.data.target.value});
         case "CHANGE_RECIPIENT_ACCOUNT":
             return state.merge({recipientAccount: action.data.target.value});
@@ -24,8 +26,9 @@ const TransferForm = (state = initialState, action ) => {
         case "CHANGE_AMOUNT":
             return state.merge({amount: action.data.target.value});
         case "CHANGE_SCHEDULER":
+            let checkValue = toggleCheckValue(action.data.target.value);
             return state.merge({
-                scheduleOperation: action.data.target.value,
+                scheduleOperation: checkValue,
                 schedulerHidden: toggleHidden(state.get('schedulerHidden'))
             });
         case "CHANGE_INITIAL_DATE":
@@ -46,5 +49,13 @@ const toggleHidden = (schedulerHidden) => {
         return ' hidden';
     }
 };
+
+const toggleCheckValue = (checkValue) => {
+    if (checkValue) {
+        return '';
+    } else {
+        return 'on';
+    }
+}
 
 module.exports = TransferForm;
