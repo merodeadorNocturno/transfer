@@ -14,8 +14,10 @@ class DatePicker extends React.Component {
     }
 
     render () {
+        const { id } = this.props;
         return (
             <DateSelect
+                id={id}
                 className="form-control"
                 selected={this.state.startDate}
                 onChange={this.handleChange} />

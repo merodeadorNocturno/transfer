@@ -18,6 +18,7 @@ class CurrencyPicker extends React.Component {
                 <div className="form-group">
                     <label htmlFor="currencies">Select Currency</label>
                     <Select
+                        id="currencyPicker"
                         className="form__currency-picker"
                         name="form-field-name"
                         options={options}

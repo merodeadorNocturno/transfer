@@ -38,6 +38,7 @@ class AccountNumber extends React.Component {
                     type="number"
                     className="form-control"
                     id={htmlForId}
+                    name={htmlForId}
                     placeholder="12 digits"
                     maxLength="12"
                     required={true}

@@ -15,16 +15,17 @@ class Scheduler extends React.Component {
             <div className={schedulerClassName}>
                 <div className="form-group">
                     <label htmlFor="fromDate">From this date</label><br />
-                    <DatePicker id="fromDate" className="form-control" />
+                    <DatePicker id="fromDate" className="form-control" name="untilDate" />
                 </div>
                 <div className="form-group">
                     <label htmlFor="untilDate">Until this date</label><br />
-                    <DatePicker id="untilDate" />
+                    <DatePicker id="untilDate" className="form-control" name="untilDate" />
                 </div>
                 <div className="form-group">
                     <label htmlFor="currencies">Select Periodicity</label>
                     <Select
                         className="form__periodicity-picker"
+                        id="form-periodicity-picker"
                         name="form-periodicity-picker"
                         options={options}
                         onChange={this.props.changePeriodicity}
