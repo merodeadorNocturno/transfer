@@ -7,13 +7,16 @@ class AccountNumber extends React.Component {
     componentDidMount () {
         const n = ReactDOM.findDOMNode(this.refs.account_number);
         const addEvent = n.addEventListener || n.attachEvent;
-
         addEvent("keypress", this.handleKeyPress, false);
     }
 
     componentWillUnmount() {
-        const removeEvent = n.removeEventListener || n.detachEvent;
-        removeEvent('keypress', this.handleKeyPress);
+        try {
+            const removeEvent = n.removeEventListener || n.detachEvent;
+            removeEvent('keypress', this.handleKeyPress);
+        } catch(e) {
+            console.error(`Error with code ${e}`);
+        }
     }
 
     handleKeyPress(n) {

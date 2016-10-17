@@ -1,17 +1,7 @@
 import React from 'react';
 
 class NavigationBar extends React.Component {
-    constructor () {
-        super();
-        this.state = {
-            amount: "0.00"
-        };
-        this.handleChange = this.handleChange.bind(this);
-    }
 
-    handleChange (value) {
-        this.setState({amount: value});
-    }
 
     render () {
         return (
@@ -27,8 +17,8 @@ class NavigationBar extends React.Component {
                     </div>
                     <div id="navbar" className="collapse navbar-collapse">
                         <ul className="nav navbar-nav">
-                            <li className="active"><a href="#">Transfers</a></li>
-                            <li><a href="#review">Review</a></li>
+                            <li className="active"><a href="#/transfer">Make Transfer</a></li>
+                            <li><a href="#/view">View Transfers</a></li>
                         </ul>
                     </div>
                 </div>
