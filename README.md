@@ -7,8 +7,9 @@ Simulates a Bank transfer using React with Redux
 * Recommended install: ``` npm install -g babel webpack webpack-dev-server ```
 2. To install, type:
 * ``` git clone https://github.com/merodeadorNocturno/transfer.git ```
+* ``` cd transfer && npm install ```
 3. To execute type:
-* ``` cd transfer && npm start ```
+* ``` npm install ```
 4. Application runs on port 3333
 * ``` http://localhost:3333 ```
 
