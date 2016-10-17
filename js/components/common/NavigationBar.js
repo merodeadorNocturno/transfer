@@ -2,8 +2,6 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 class NavigationBar extends React.Component {
-
-
     render () {
         return (
             <nav className="navbar navbar-inverse navbar-fixed-top">

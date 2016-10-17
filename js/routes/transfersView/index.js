@@ -1,5 +1,5 @@
 import React from 'react';
-import NavigationBar from '../../components/common/NavigationBar';
+import { NavigationBar } from '../../components/common/NavigationBar';
 import ListTransfers from '../../components/transfers/ListTransfers';
 
 class MainBank extends React.Component {

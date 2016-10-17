@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { TransferForm } from '../../components/transfers/TransferForm';
-import NavigationBar from '../../components/common/NavigationBar';
+import { NavigationBar } from '../../components/common/NavigationBar';
 
 class MainBank extends React.Component {
     render () {
