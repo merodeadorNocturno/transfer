@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import TransferForm from '../transfersView/makeTransfer';
-import NavigationBar from '../../components/common/NavigationBar';
+import { NavigationBar } from '../../components/common/NavigationBar';
 import {connect} from 'react-redux';
 import { bindActionCreators } from 'redux';
 

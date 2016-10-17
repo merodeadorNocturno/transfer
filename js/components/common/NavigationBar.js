@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
 class NavigationBar extends React.Component {
 
@@ -28,4 +29,15 @@ class NavigationBar extends React.Component {
 }
 
 
-export default NavigationBar;
+//export default NavigationBar;
+
+module.exports.NavigationBar = connect(
+    (state) => {
+        return { selectedMenuItem: state.NavigationBar };
+    },
+    {
+        changeItem: (data) => {
+            return { type: 'NEW_SELECTED_ITEM', data };
+        }
+    }
+)(NavigationBar);

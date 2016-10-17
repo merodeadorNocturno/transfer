@@ -1,5 +1,5 @@
 import React from 'react';
-import NavigationBar from '../../components/common/NavigationBar';
+import { NavigationBar } from '../../components/common/NavigationBar';
 import Modal from 'react-modal';
 
 class Success extends React.Component {
