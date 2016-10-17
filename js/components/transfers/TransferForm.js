@@ -69,16 +69,15 @@ const insertTransfers = (transfer) => {
     fixEmptyTransfers();
 
     return new Promise((resolve, reject) => {
-    console.log('parsedTransfer', parsedTransfer);
         insertTransferToDb(parsedTransfer);
         const json = getFromLocalStorage();
         if (json !== null) {
             resolve(JSON.parse(json));
         } else {
-            reject('No data available...');
+            reject('Dispatch Alert: No data available...');
         }
     }).then((json) => {
-        dispatch(receiveTransfers(transfer, json));
+        console.log(`Dispatch Alert: Transfer successful: ${JSON.stringify(json)}`)
     }).catch((reason) => {
         return console.log(reason);
     });
