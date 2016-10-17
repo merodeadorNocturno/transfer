@@ -9,7 +9,7 @@ Simulates a Bank transfer using React with Redux
 * ``` git clone https://github.com/merodeadorNocturno/transfer.git ```
 * ``` cd transfer && npm install ```
 3. To execute type:
-* ``` npm install ```
+* ``` npm start ```
 4. Application runs on port 3333
 * ``` http://localhost:3333 ```
 
