@@ -15,13 +15,17 @@ class AccountNumber extends React.Component {
             const removeEvent = n.removeEventListener || n.detachEvent;
             removeEvent('keypress', this.handleKeyPress);
         } catch(e) {
-            console.error(`Error with code ${e}`);
+            return false;
+            // console.error(`Error with code ${e}`);
         }
     }
 
     handleKeyPress(n) {
         const limit = /^[0-9]{0,11}$/;
         let target = n.target.value;
+        if (!target) {
+            return false;
+        }
         if (!target.match(limit)) {
             n.preventDefault();
         }
