@@ -9,6 +9,7 @@ import Scheduler from './transfers/Scheduler';
 import Amount from './transfers/Amount';
 import TransferForm from './transfers/TransferForm';
 import Transfers from './reducers';
+import NavigationBar from './common/NavigationBar';
 
 
 const appReducer = combineReducers({
@@ -17,6 +18,7 @@ const appReducer = combineReducers({
     Scheduler,
     Amount,
     TransferForm,
+    NavigationBar,
     routing: routerReducer
 });
 

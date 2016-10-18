@@ -2,7 +2,11 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 class NavigationBar extends React.Component {
+    constructor(props) {
+        super(props);
+    }
     render () {
+        const { NavigationBar } = this.props;
         return (
             <nav className="navbar navbar-inverse navbar-fixed-top">
                 <div className="container">
@@ -16,8 +20,25 @@ class NavigationBar extends React.Component {
                     </div>
                     <div id="navbar" className="collapse navbar-collapse">
                         <ul className="nav navbar-nav">
-                            <li className="active"><a href="#/transfer">Make Transfer</a></li>
-                            <li><a href="#/view">View Transfers</a></li>
+                            <li
+                                className={NavigationBar.get('transferElement')}
+                                    onClick={this.props.changeItem}
+                            >
+                                <a
+                                    id="transfer"
+                                    href="#/transfer"
+                                    ref="transfer"
+                                >Make Transfer</a>
+                            </li>
+                            <li
+                                className={NavigationBar.get('viewElement')}
+                                    onClick={this.props.changeItem}
+                            >
+                                <a
+                                    href="#/view"
+                                    id="view"
+                                
+                                >View Transfers</a></li>
                         </ul>
                     </div>
                 </div>
@@ -28,10 +49,10 @@ class NavigationBar extends React.Component {
 
 
 //export default NavigationBar;
-
+module.exports.constructor = NavigationBar;
 module.exports.NavigationBar = connect(
-    (state) => {
-        return { selectedMenuItem: state.NavigationBar };
+    (state) => { //console.log('fn', state.NavigationBar);
+        return { NavigationBar: state.NavigationBar };
     },
     {
         changeItem: (data) => {
